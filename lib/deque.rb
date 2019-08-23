@@ -14,10 +14,10 @@ class Node
     end
     
     def pushFront(number)
-        @first = Node.new(number, @first)
-        @last = @first if @last.nil?
-        @first.next_node.prev_node = @first if @first.next_node
-      end
+      @first = Node.new(number, @first, nil)
+      @last = @first if @last.nil?
+      @first.next_node.prev_node = @first if @first.next_node
+    end
       
       def pushBack(number)
         pushFront(number) if @first == nil
@@ -31,6 +31,7 @@ class Node
       
       def popBack
         @last = @last.prev_node if @last != @first
+        self.popFront if @last == @first
       end
       
       def topFront
@@ -46,3 +47,4 @@ class Node
       end
   end
   
+
