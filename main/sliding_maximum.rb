@@ -12,7 +12,16 @@ def sliding_maximum(k,array)
             deque.popFront
         end
 
+        if deque.topFront < array[i]
+            deque.popFront
+            deque.pushFront(array[i])
+        end
+
         
+
+    end
+    
+    res
 end
 
 sliding_maximum(4, [1, 3, 5, 7, 9, 2])
