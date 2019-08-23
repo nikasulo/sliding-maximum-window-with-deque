@@ -40,5 +40,9 @@ class Node
       def topBack
         @last.value
       end
+      
+      def is_empty?
+        @first.nil?
+      end
   end
   
