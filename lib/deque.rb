@@ -35,11 +35,11 @@ class Node
       end
       
       def topFront
-        @first.value
+        @first.value if !@first.nil?
       end
       
       def topBack
-        @last.value
+        @last.value if !@last.nil?
       end
       
       def is_empty?
@@ -47,4 +47,3 @@ class Node
       end
   end
   
-

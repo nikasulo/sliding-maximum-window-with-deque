@@ -15,6 +15,8 @@ def sliding_maximum(k,array)
             deque.pushFront(array[i])
         end
         
+        deque.popFront if deque.topFront == array[i - k]
+        
         if deque.topBack > array[i] 
             deque.pushBack(array[i])
         else
@@ -23,7 +25,6 @@ def sliding_maximum(k,array)
         end
         
         
-        deque.popFront if deque.topFront == array[i - k]
         
         if i >= k - 1
             res << deque.topFront
