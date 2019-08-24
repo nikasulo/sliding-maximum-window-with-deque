@@ -1,16 +1,5 @@
 require_relative '../lib/deque'
 
-# def sliding_maximum(k, array)
-#     res = []
-#     for i in 0..array.length - k do
-#         max = array[i]
-#         for j in i...i+k do 
-#             max = array[j] > max ? array[j] : max
-#         end 
-#         res << max
-#     end   
-#     res
-# end
 def add_max_to_result(result, max)
     result << max
 end
