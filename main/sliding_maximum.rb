@@ -4,8 +4,8 @@ def add_max_to_result(result, max)
     result << max
 end
 
-def max_in_window?(out_of_window, max, deque)
-    max != out_of_window
+def max_in_window?(index, array, max, deque)
+    max != array[index]
 end
 
 def set_max(deque,max)
@@ -25,17 +25,16 @@ def sliding_maximum(k,array)
     result = []
     for i in (0...array.length) do
         
-        out_of_window = array[i - k]
         set_max(deque,array[i]) if deque.is_empty?
-
+        
         max = get_max(deque)
+        remove_max(deque) if !max_in_window?((i - k), array, max, deque)
         
         if max < array[i] 
             remove_max(deque)
             set_max(deque, array[i])
         end
-        
-        remove_max(deque) if !max_in_window?(out_of_window, max, deque)
+
         
         if deque.topBack > array[i] 
             deque.pushBack(array[i])
@@ -56,5 +55,5 @@ def sliding_maximum(k,array)
     result
 end
 
-# p sliding_maximum(4, [9, 3, 5, 1, 7, 10])
-# p sliding_maximum(3, [1, 3, 5, 7, 9, 2])
+p sliding_maximum(4, [9, 3, 5, 1, 7, 10])
+p sliding_maximum(3, [1, 3, 5, 7, 9, 2])
