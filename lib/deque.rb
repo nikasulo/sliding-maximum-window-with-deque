@@ -1,29 +1,35 @@
 require_relative 'node'  
 
 class Deque
+  attr_accessor :first
+
   def initialize
-    @first = nil
+    @first = Node.new(nil)
+    @last = @first
   end
   
   def pushFront(number)
     @first = Node.new(number, @first, nil)
-    @last = @first if @last.nil?
-    @first.next_node.prev_node = @first if @first.next_node
+    @last = @first if @last and @last.value.nil?
   end
     
   def pushBack(number)
-    pushFront(number) if @first == nil
-    @last.next_node = Node.new(number, nil,@last)
-    @last = @last.next_node
+    self.pushFront(number) and return if @last.value == nil 
+    new_node = Node.new(number, nil, @last)
+    @last.next_node = new_node
+    @last = new_node
   end
   
   def popFront
     @first = @first.next_node
+    @first = Node.new(nil) if @first == @last
+    @last = @first
   end
   
   def popBack
-    @last = @last.prev_node if @last != @first
-    self.popFront if @last == @first
+    @last = @last.prev_node and return unless @first == @last
+    @first = Node.new(nil)
+    @last = @first
   end
   
   def topFront
@@ -35,6 +41,29 @@ class Deque
   end
   
   def is_empty?
-    @first.nil?
+    @first.value.nil?
+  end
+
+  def print
+    res = []
+    current = @first
+    while current
+      res << current.value 
+      current = current.next_node
+    end
+    p res
   end
 end
+
+# d = Deque.new
+# d.pushFront(10)
+# d.pushBack(7)
+# d.pushBack(5)
+# d.pushBack(1)
+# if d.topBack < 3
+#   d.popBack
+#   d.pushBack(3)
+# end
+# d.print
+# p d.topBack
+
