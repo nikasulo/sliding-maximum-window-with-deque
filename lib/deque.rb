@@ -10,7 +10,7 @@ class Deque
   
   def pushFront(number)
     @first = Node.new(number, @first, nil)
-    @last = @first if @last.nil?
+    @last = @first if @last and @last.value.nil?
   end
     
   def pushBack(number)
@@ -41,7 +41,7 @@ class Deque
   end
   
   def is_empty?
-    @first.nil? || @last.nil?
+    @first.value.nil?
   end
 
   def print
@@ -55,22 +55,15 @@ class Deque
   end
 end
 
-d = Deque.new
-d.pushBack(2)
-d.pushBack(12)
-d.pushBack(24)
-d.pushFront(6)
-d.pushBack(7)
-d.popBack
-d.popBack
-d.popFront
-d.popBack
-d.popFront
-d.pushFront(11)
-d.pushBack(7)
-d.popBack
-d.popBack
-# d.popBack
-p d.topFront
-p d.topBack
+# d = Deque.new
+# d.pushFront(10)
+# d.pushBack(7)
+# d.pushBack(5)
+# d.pushBack(1)
+# if d.topBack < 3
+#   d.popBack
+#   d.pushBack(3)
+# end
+# d.print
+# p d.topBack
 
