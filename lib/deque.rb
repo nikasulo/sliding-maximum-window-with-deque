@@ -33,11 +33,11 @@ class Deque
   end
   
   def topFront
-    @first.value if !@first.nil?
+    @first.value unless @first.nil?
   end
   
   def topBack
-    @last.value if !@last.nil?
+    @last.value unless @last.nil?
   end
   
   def is_empty?
