@@ -15,17 +15,17 @@ Example
 
 This is an example of a test case:
 
-*sliding_maximum(3, [1, 3, 5, 7, 9, 2])
+* sliding_maximum(3, [1, 3, 5, 7, 9, 2])
 > => [5, 7, 9, 9]
 
 The first argument is k, which is 3 in this case. The output is the largest number for each group of 3 numbers in the list:
 
-3 numbers | Largest
----------------------------------
-1 3 5          | 5
-3 5 7          | 7 
-5 7 9          | 9 
-7 9 2          | 9
+| 3 numbers | Largest |
+|---------------------|
+|   1 3 5   |    5    |
+|   3 5 7   |    7    | 
+|   5 7 9   |    9    | 
+|   7 9 2   |    9    | 
 
 ### For better understanding read my tutorial for this problem
 [How to solve the sliding maximum window in O(n) time](https://medium.com/better-programming/solving-the-sliding-maximum-window-problem-with-o-n-b43ea3dd871f)
